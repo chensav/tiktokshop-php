@@ -152,9 +152,9 @@ class ProductTest extends TestResource
         $this->assertPreviousRequest('GET', 'product/'.TestResource::TEST_API_VERSION.'/products/diagnoses');
     }
 
-    public function testSetWord()
+    public function testSeoWord()
     {
-        $this->caller->setWord([]);
+        $this->caller->seoWord([]);
         $this->assertPreviousRequest('GET', 'product/'.TestResource::TEST_API_VERSION.'/products/seo_words');
     }
 

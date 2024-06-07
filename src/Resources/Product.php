@@ -217,7 +217,7 @@ class Product extends GlobalProduct
         ]);
     }
 
-    public function setWord($params = [])
+    public function seoWord($params = [])
     {
         return $this->call('GET', 'products/seo_words', [
             RequestOptions::QUERY => $params,
