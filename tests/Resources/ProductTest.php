@@ -145,4 +145,28 @@ class ProductTest extends TestResource
         $this->caller->createCustomBrand([]);
         $this->assertPreviousRequest('POST', 'product/'.TestResource::TEST_API_VERSION.'/brands');
     }
+
+    public function testDiagnoses()
+    {
+        $this->caller->diagnoses([]);
+        $this->assertPreviousRequest('GET', 'product/'.TestResource::TEST_API_VERSION.'/products/diagnoses');
+    }
+
+    public function testSetWord()
+    {
+        $this->caller->setWord([]);
+        $this->assertPreviousRequest('GET', 'product/'.TestResource::TEST_API_VERSION.'/products/seo_words');
+    }
+
+    public function testSuggestions()
+    {
+        $this->caller->suggestions([]);
+        $this->assertPreviousRequest('GET', 'product/'.TestResource::TEST_API_VERSION.'/products/suggestions');
+    }
+
+    public function testImageOptimize()
+    {
+        $this->caller->imageOptimize([]);
+        $this->assertPreviousRequest('POST', 'product/'.TestResource::TEST_API_VERSION.'/images/optimize');
+    }
 }
