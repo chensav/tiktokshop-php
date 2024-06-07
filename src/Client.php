@@ -10,6 +10,7 @@
 
 namespace EcomPHP\TiktokShop;
 
+use EcomPHP\TiktokShop\Resources\AffiliateSeller;
 use EcomPHP\TiktokShop\Resources\CustomerService;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Client as GuzzleHttpClient;
@@ -43,6 +44,8 @@ use Psr\Http\Message\RequestInterface;
  * @property-read Supplychain $Supplychain
  * @property-read Event $Event
  * @property-read ReturnRefund $ReturnRefund
+ * @property-read CustomerService $CustomerService
+ * @property-read AffiliateSeller $AffiliateSeller
  */
 class Client
 {
@@ -79,19 +82,29 @@ class Client
         Event::class,
         ReturnRefund::class,
         CustomerService::class,
+        AffiliateSeller::class,
     ];
 
     public function __construct($app_key, $app_secret, $options = [])
     {
         $this->app_key = $app_key;
         $this->app_secret = $app_secret;
-        $this->version = static::DEFAULT_VERSION;
         $this->options = $options;
+
+        $this->useVersion(static::DEFAULT_VERSION);
     }
 
     public function useSandboxMode()
     {
         trigger_deprecation('ecomphp/tiktokshop-php', '2.0.0', 'useSandboxMode() will be deprecated: Since API version 202309, Tiktokshop API sandbox is no longer worked, please use production environment.');
+    }
+
+    /**
+     * Change default api version for all resources called from this client
+     */
+    public function useVersion($version)
+    {
+        $this->version = $version;
     }
 
     public function getAppKey()
