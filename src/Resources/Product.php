@@ -209,4 +209,33 @@ class Product extends GlobalProduct
             RequestOptions::JSON => $params
         ]);
     }
+
+    public function diagnoses($params = [])
+    {
+        return $this->call('GET', 'products/diagnoses', [
+            RequestOptions::QUERY => $params,
+        ]);
+    }
+
+    public function setWord($params = [])
+    {
+        return $this->call('GET', 'products/seo_words', [
+            RequestOptions::QUERY => $params,
+        ]);
+    }
+
+    public function suggestions($params = [])
+    {
+        return $this->call('GET', 'products/suggestions', [
+            RequestOptions::QUERY => $params,
+        ]);
+    }
+
+    public function imageOptimize($params = [], $body = null)
+    {
+        return $this->call('POST', 'images/optimize', [
+            RequestOptions::QUERY => $params,
+            RequestOptions::JSON => $body
+        ]);
+    }
 }
