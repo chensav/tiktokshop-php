@@ -241,6 +241,6 @@ class Product extends GlobalProduct
 
     public function categoryUpdateTask()
     {
-        return $this->call('POST', '/products/category_upgrade_task');
+        return $this->call('POST', 'products/category_upgrade_task');
     }
 }
