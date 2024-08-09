@@ -238,4 +238,9 @@ class Product extends GlobalProduct
             RequestOptions::JSON => $body
         ]);
     }
+
+    public function categoryUpdateTask()
+    {
+        return $this->call('POST', '/products/category_upgrade_task');
+    }
 }
