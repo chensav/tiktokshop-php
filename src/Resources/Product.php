@@ -29,12 +29,12 @@ class Product extends GlobalProduct
         return $this->call('POST', 'files/upload', [
             RequestOptions::MULTIPART => [
                 [
-                    'name' => 'data',
+                    'name'     => 'data',
                     'filename' => $file_name,
                     'contents' => static::dataTypeCast('file', $file),
                 ],
                 [
-                    'name' => 'name',
+                    'name'     => 'name',
                     'contents' => $file_name,
                 ]
             ]
@@ -46,12 +46,12 @@ class Product extends GlobalProduct
         return $this->call('POST', 'images/upload', [
             RequestOptions::MULTIPART => [
                 [
-                    'name' => 'data',
+                    'name'     => 'data',
                     'filename' => 'image',
                     'contents' => static::dataTypeCast('image', $image),
                 ],
                 [
-                    'name' => 'use_case',
+                    'name'     => 'use_case',
                     'contents' => $use_case,
                 ]
             ]
@@ -76,21 +76,21 @@ class Product extends GlobalProduct
 
     public function editProduct($product_id, $data = [])
     {
-        return $this->call('PUT', 'products/'.$product_id, [
+        return $this->call('PUT', 'products/' . $product_id, [
             RequestOptions::JSON => $data
         ]);
     }
 
     public function updateInventory($product_id, $params = [])
     {
-        return $this->call('POST', 'products/'.$product_id.'/inventory/update', [
+        return $this->call('POST', 'products/' . $product_id . '/inventory/update', [
             RequestOptions::JSON => $params
         ]);
     }
 
     public function getProduct($product_id, $params = [])
     {
-        return $this->call('GET', 'products/'.$product_id, [
+        return $this->call('GET', 'products/' . $product_id, [
             RequestOptions::QUERY => $params,
         ]);
     }
@@ -124,7 +124,7 @@ class Product extends GlobalProduct
 
     public function updatePrice($product_id, $params)
     {
-        return $this->call('POST', 'products/'.$product_id.'/prices/update', [
+        return $this->call('POST', 'products/' . $product_id . '/prices/update', [
             RequestOptions::JSON => $params
         ]);
     }
@@ -158,14 +158,14 @@ class Product extends GlobalProduct
 
     public function getAttributes($category_id, $params = [])
     {
-        return $this->call('GET', 'categories/'.$category_id.'/attributes', [
+        return $this->call('GET', 'categories/' . $category_id . '/attributes', [
             RequestOptions::QUERY => $params
         ]);
     }
 
     public function getCategoryRules($category_id)
     {
-        return $this->call('GET', 'categories/'.$category_id.'/rules');
+        return $this->call('GET', 'categories/' . $category_id . '/rules');
     }
 
     public function recommendCategory($product_title, $description = '', $images = [])
@@ -173,8 +173,8 @@ class Product extends GlobalProduct
         return $this->call('POST', 'categories/recommend', [
             RequestOptions::JSON => [
                 'product_title' => $product_title,
-                'description' => $description,
-                'images' => $images,
+                'description'   => $description,
+                'images'        => $images,
             ]
         ]);
     }
@@ -186,7 +186,7 @@ class Product extends GlobalProduct
 
     public function partialEditProduct($product_id, $params = [])
     {
-        return $this->call('POST', 'products/'.$product_id.'/partial_edit', [
+        return $this->call('POST', 'products/' . $product_id . '/partial_edit', [
             RequestOptions::JSON => $params
         ]);
     }
@@ -198,7 +198,7 @@ class Product extends GlobalProduct
         }
 
         return $this->call('POST', 'products/search', [
-            RequestOptions::QUERY => $query,
+            RequestOptions::QUERY                                                => $query,
             is_array($body) ? RequestOptions::JSON : RequestOptions::FORM_PARAMS => $body,
         ]);
     }
@@ -235,12 +235,19 @@ class Product extends GlobalProduct
     {
         return $this->call('POST', 'images/optimize', [
             RequestOptions::QUERY => $params,
-            RequestOptions::JSON => $body
+            RequestOptions::JSON  => $body
         ]);
     }
 
     public function categoryUpdateTask()
     {
         return $this->call('POST', 'products/category_upgrade_task');
+    }
+
+    public function listingCheck(array $body = [])
+    {
+        return $this->call('POST', 'products/listing_check', [
+            RequestOptions::JSON => $body
+        ]);
     }
 }
