@@ -19,6 +19,8 @@ class Fbt extends Resource
 
     protected $version = 202409;
 
+    protected $minimum_version = 202409;
+
     /**
      * fbt 区域列表
      *
