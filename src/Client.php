@@ -97,6 +97,7 @@ class Client
         AffiliatePartner::class,
         Analytics::class,
         FulfilledByTiktok::class,
+        Fbt::class
     ];
 
     public function __construct($app_key, $app_secret, $options = [])
