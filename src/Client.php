@@ -16,6 +16,7 @@ use EcomPHP\TiktokShop\Resources\AffiliatePartner;
 use EcomPHP\TiktokShop\Resources\AffiliateSeller;
 use EcomPHP\TiktokShop\Resources\Analytics;
 use EcomPHP\TiktokShop\Resources\CustomerService;
+use EcomPHP\TiktokShop\Resources\Fbt;
 use EcomPHP\TiktokShop\Resources\FulfilledByTiktok;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\HandlerStack;
@@ -54,6 +55,7 @@ use Psr\Http\Message\RequestInterface;
  * @property-read AffiliateSeller $AffiliateSeller
  * @property-read AffiliateCreator $AffiliateCreator
  * @property-read AffiliatePartner $AffiliatePartner
+ * @property-read Fbt $Fbt
  */
 class Client
 {
