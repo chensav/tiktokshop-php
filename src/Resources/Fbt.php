@@ -17,6 +17,8 @@ class Fbt extends Resource
 {
     protected $category = 'fbt';
 
+    protected $version = 202409;
+
     /**
      * fbt 区域列表
      *
